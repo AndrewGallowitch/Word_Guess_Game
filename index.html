@@ -65,7 +65,6 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 
 
   var wins = 0;
-  var numberGuesses = 15;
   
 
 var  winsText = document.getElementById("wins-text");
@@ -81,21 +80,20 @@ for(var i = 0; i < computerChoice.length; i++){
     answerText.append(" _ ")
 };
 
-
 document.onkeyup = function(event) {
 var userGuess = event.key;
-
-console.log(userGuess);
-
-if (computerChoice === letters) {
+console.log(userGuess)
     for(var i = 0; i < computerChoice.length; i++); {
-        if(userGuess === computerChoice[i]); {
-           
+        if(userGuess === computerChoice.charAt(i)); {
+            answerText.innerHTML = computerChoice.charAt(i);
         }
     }
 }
-}
 
+
+
+
+    
 
         
 
