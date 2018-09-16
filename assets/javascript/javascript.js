@@ -1,10 +1,12 @@
 
 // create an array of word options (just strings no spaces)
-var wordBank = [
-    "ronaldo", "pogba", "salah", "griezmann", "messi"];
+const wordBank = [
+    "ronaldo", "pogba", "salah", "griezmann", "messi"
+];
 
-var images = [
-    "<img src= "];
+const images = [
+    "<img src= "
+];
 
 // Create global variables
 var wordIndex = "";
@@ -20,15 +22,15 @@ var losses = 0;
 var guessNumber = 15;
 
 
+function pickRandomFromWordBank() {
+    return wordBank[Math.floor(Math.random() * wordBank.length)];
+}
+
 function startGame() {
-
-    uessNumber = 15;
-
     // computer picks a random word from that array
-   
-    wordIndex = wordBank[Math.floor(Math.random() * wordBank.length)];
+    wordIndex = pickRandomFromWordBank()
     lettersInWordBank = wordIndex.split("");
-console.log(wordIndex)
+    console.log(wordIndex)
     numBlanks = lettersInWordBank.length;
 
     blanksAndSuccesses = [];
@@ -52,8 +54,12 @@ function checkLetters(letter) {
     for (var i = 0; i < numBlanks; i++) {
         if (wordIndex[i] === letter) {
             letterInWord = true;
+            // You probably want to exit the loop when you find the letter in the word,
+            // so you can use the `break` keyword to exit the for loop once you find a match
+            break;
         }
     }
+
     if (letterInWord) {
         for (var j = 0; j < numBlanks; j++) {
             if (wordIndex[j] === letter) {
@@ -69,12 +75,9 @@ function checkLetters(letter) {
 
 // restart game if user runs out of guesses/ move to next word when no blanks remain
 function roundComplete() {
-
-
     document.getElementById("guess-text").innerHTML = guessNumber;
     document.getElementById("answer-text").innerHTML = blanksAndSuccesses.join(" ");
     document.getElementById("wrong-text").innerHTML = wrongGuesses.join(" ");
-
 
     // compare user guess to letters in chosen word
     // track incorrect guesses and guesses remaining; display to user
@@ -95,9 +98,7 @@ function roundComplete() {
 }
 
 startGame();
-
 // capture key events
-
 document.onkeyup = function (event) {
 
     letterGuessed = String.fromCharCode(event.which).toLowerCase();
