@@ -22,13 +22,13 @@ var losses = 0;
 var guessNumber = 15;
 
 
-function pickRandomFromWordBank() {
+function pickRandomWordFromWordBank() {
     return wordBank[Math.floor(Math.random() * wordBank.length)];
 }
 
 function startGame() {
     // computer picks a random word from that array
-    wordIndex = pickRandomFromWordBank()
+    wordIndex = pickRandomWordFromWordBank()
     lettersInWordBank = wordIndex.split("");
     console.log(wordIndex)
     numBlanks = lettersInWordBank.length;
@@ -54,8 +54,6 @@ function checkLetters(letter) {
     for (var i = 0; i < numBlanks; i++) {
         if (wordIndex[i] === letter) {
             letterInWord = true;
-            // You probably want to exit the loop when you find the letter in the word,
-            // so you can use the `break` keyword to exit the for loop once you find a match
             break;
         }
     }
